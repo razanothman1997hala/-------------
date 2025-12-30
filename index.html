@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Antigravity | عراف النكهات الذكي</title>
+    <meta name="description" content="مطعم المستقبل - اكتشف طبقك المثالي بناءً على مزاجك">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'cairo': ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        'space': {
+                            900: '#0a0a1a',
+                            800: '#12122a',
+                            700: '#1a1a3a',
+                        },
+                        'neon': {
+                            cyan: '#00f5ff',
+                            purple: '#bf00ff',
+                            pink: '#ff00aa',
+                            blue: '#0066ff',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-cairo bg-space-900 min-h-screen overflow-x-hidden">
+    <!-- Animated Stars Background -->
+    <div class="stars-container fixed inset-0 pointer-events-none">
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+    </div>
+
+    <!-- Floating Orbs -->
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
+
+    <!-- Main Container -->
+    <main class="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-8">
+        
+        <!-- Logo & Title Section -->
+        <header class="text-center mb-12 floating-element">
+            <div class="logo-container mb-6">
+                <div class="logo-ring"></div>
+                <div class="logo-core">
+                    <span class="text-4xl">🚀</span>
+                </div>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink mb-4 title-glow">
+                AI Antigravity
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 subtitle-fade">
+                ✨ عراف النكهات الذكي ✨
+            </p>
+            <p class="text-gray-500 mt-2 text-sm">
+                دع الذكاء الاصطناعي يقرأ مزاجك ويختار لك الطبق المثالي
+            </p>
+        </header>
+
+        <!-- Mood Input Section -->
+        <section class="w-full max-w-2xl floating-element" style="animation-delay: 0.3s;">
+            <div class="glass-card p-8 rounded-3xl">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-white mb-2">
+                        <span class="text-neon-cyan">🔮</span> كيف تشعر الآن؟
+                    </h2>
+                    <p class="text-gray-400 text-sm">
+                        صف لنا مزاجك، أو اختر من المشاعر أدناه
+                    </p>
+                </div>
+
+                <!-- Mood Quick Select -->
+                <div class="flex flex-wrap justify-center gap-3 mb-6">
+                    <button class="mood-chip" data-mood="سعيد ومتحمس">
+                        😊 سعيد
+                    </button>
+                    <button class="mood-chip" data-mood="هادئ ومسترخي">
+                        😌 هادئ
+                    </button>
+                    <button class="mood-chip" data-mood="متعب ومرهق">
+                        😴 متعب
+                    </button>
+                    <button class="mood-chip" data-mood="جائع جداً">
+                        🤤 جائع
+                    </button>
+                    <button class="mood-chip" data-mood="احتفالي ومميز">
+                        🎉 احتفالي
+                    </button>
+                    <button class="mood-chip" data-mood="حنين للماضي">
+                        🥺 حنين
+                    </button>
+                </div>
+
+                <!-- Text Input -->
+                <div class="relative mb-6">
+                    <textarea 
+                        id="moodInput" 
+                        class="w-full bg-space-800/50 border-2 border-neon-cyan/30 rounded-2xl p-4 text-white placeholder-gray-500 focus:border-neon-cyan focus:outline-none focus:ring-2 focus:ring-neon-cyan/20 transition-all duration-300 resize-none"
+                        rows="3"
+                        placeholder="مثال: أشعر بالسعادة والحماس، أريد شيئاً لذيذاً ومميزاً..."
+                    ></textarea>
+                    <div class="absolute bottom-3 left-3 text-gray-500 text-xs" id="charCount">
+                        0 / 200
+                    </div>
+                </div>
+
+                <!-- Context Options -->
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="context-select">
+                        <label class="text-gray-400 text-sm mb-2 block">🌤️ الطقس</label>
+                        <select id="weatherSelect" class="w-full bg-space-800 border border-neon-purple/30 rounded-xl p-3 text-white focus:border-neon-purple focus:outline-none">
+                            <option value="sunny">☀️ مشمس</option>
+                            <option value="cloudy">🌤️ غائم</option>
+                            <option value="rainy">🌧️ ماطر</option>
+                            <option value="cold">❄️ بارد</option>
+                        </select>
+                    </div>
+                    <div class="context-select">
+                        <label class="text-gray-400 text-sm mb-2 block">⏰ الوقت</label>
+                        <select id="timeSelect" class="w-full bg-space-800 border border-neon-purple/30 rounded-xl p-3 text-white focus:border-neon-purple focus:outline-none">
+                            <option value="breakfast">🌅 فطور</option>
+                            <option value="lunch">☀️ غداء</option>
+                            <option value="dinner" selected>🌙 عشاء</option>
+                            <option value="snack">🍪 وجبة خفيفة</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button id="analyzeBtn" class="w-full submit-btn py-4 rounded-2xl text-xl font-bold text-white relative overflow-hidden group">
+                    <span class="relative z-10 flex items-center justify-center gap-2">
+                        <span>🧠</span>
+                        <span>اقرأ مزاجي واقترح لي</span>
+                        <span class="arrow-icon">←</span>
+                    </span>
+                    <div class="btn-glow"></div>
+                </button>
+            </div>
+        </section>
+
+        <!-- Loading State -->
+        <section id="loadingSection" class="hidden w-full max-w-2xl mt-8">
+            <div class="glass-card p-8 rounded-3xl text-center">
+                <div class="ai-thinking mb-4">
+                    <div class="brain-icon">🧠</div>
+                    <div class="pulse-ring"></div>
+                    <div class="pulse-ring" style="animation-delay: 0.5s;"></div>
+                </div>
+                <p class="text-xl text-neon-cyan" id="loadingText">جاري تحليل مزاجك...</p>
+                <div class="loading-bar mt-4">
+                    <div class="loading-progress"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="resultsSection" class="hidden w-full max-w-4xl mt-8">
+            <div class="glass-card p-8 rounded-3xl">
+                <!-- AI Chef Header -->
+                <div class="text-center mb-8">
+                    <div class="chef-avatar mx-auto mb-4">
+                        <span class="text-5xl">👨‍🍳</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">الشيف الذكي يقترح لك</h3>
+                    <p class="text-gray-400" id="moodAnalysis">بناءً على تحليل مزاجك...</p>
+                </div>
+
+                <!-- Recommendations Grid -->
+                <div id="recommendationsGrid" class="grid md:grid-cols-2 gap-6">
+                    <!-- Cards will be injected here -->
+                </div>
+
+                <!-- Try Again Button -->
+                <div class="text-center mt-8">
+                    <button id="resetBtn" class="px-8 py-3 bg-space-700 hover:bg-space-800 border border-neon-cyan/30 rounded-xl text-white transition-all duration-300 hover:border-neon-cyan">
+                        🔄 جرب مزاج آخر
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-16 text-center text-gray-600 text-sm floating-element" style="animation-delay: 0.6s;">
+            <p>© 2024 AI Antigravity Restaurant | مطعم المستقبل</p>
+            <p class="mt-1">🌌 حيث الطعام يتحرر من الجاذبية</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
