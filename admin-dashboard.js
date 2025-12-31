@@ -393,6 +393,92 @@ function updateLiveData() {
 }
 
 // ============================================
+// Theme Toggle Functionality
+// ============================================
+const themeToggleBtn = document.getElementById('themeToggle');
+let isLightMode = localStorage.getItem('adminTheme') === 'light';
+
+function updateChartColors() {
+    const textColor = isLightMode ? '#4B5563' : 'rgba(255, 255, 255, 0.5)';
+    const gridColor = isLightMode ? '#E5E7EB' : 'rgba(255, 255, 255, 0.05)';
+
+    // Update Traffic Chart
+    if (trafficChart) {
+        trafficChart.options.scales.x.ticks.color = textColor;
+        trafficChart.options.scales.y.ticks.color = textColor;
+        trafficChart.options.scales.x.grid.color = gridColor;
+        trafficChart.options.scales.y.grid.color = gridColor;
+
+        // Update line colors for better contrast in light mode
+        if (isLightMode) {
+            trafficChart.data.datasets[0].borderColor = '#9c27b0';
+            trafficChart.data.datasets[0].backgroundColor = 'rgba(156, 39, 176, 0.1)';
+            trafficChart.data.datasets[0].pointBackgroundColor = '#9c27b0';
+        } else {
+            trafficChart.data.datasets[0].borderColor = '#00f5ff';
+            trafficChart.data.datasets[0].backgroundColor = 'rgba(0, 245, 255, 0.1)';
+            trafficChart.data.datasets[0].pointBackgroundColor = '#00f5ff';
+        }
+        trafficChart.update('none');
+    }
+
+    // Update Revenue Chart
+    if (revenueChart) {
+        revenueChart.options.scales.x.ticks.color = textColor;
+        revenueChart.options.scales.y.ticks.color = textColor;
+        revenueChart.options.scales.y.grid.color = gridColor;
+        revenueChart.update('none');
+    }
+}
+
+function toggleTheme() {
+    isLightMode = !isLightMode;
+    document.body.classList.toggle('light-mode', isLightMode);
+    localStorage.setItem('adminTheme', isLightMode ? 'light' : 'dark');
+
+    // Update toggle button icon
+    if (themeToggleBtn) {
+        themeToggleBtn.textContent = isLightMode ? '🌙' : '☀️';
+    }
+
+    // Update chart colors
+    updateChartColors();
+
+    // Update sentiment score color based on theme
+    const overallScoreEl = document.getElementById('overallScore');
+    if (overallScoreEl && isLightMode) {
+        const score = parseInt(overallScoreEl.textContent);
+        overallScoreEl.style.color = score >= 70 ? '#22c55e' : score >= 50 ? '#f59e0b' : '#ef4444';
+    }
+}
+
+function initTheme() {
+    if (isLightMode) {
+        document.body.classList.add('light-mode');
+        if (themeToggleBtn) {
+            themeToggleBtn.textContent = '🌙';
+        }
+    } else {
+        if (themeToggleBtn) {
+            themeToggleBtn.textContent = '☀️';
+        }
+    }
+}
+
+// Add event listener for theme toggle
+if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', toggleTheme);
+}
+
+// ============================================
 // Start Application
 // ============================================
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    init();
+
+    // Apply chart colors after charts are initialized
+    setTimeout(() => {
+        updateChartColors();
+    }, 100);
+});
