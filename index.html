@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Antigravity | عراف النكهات الذكي</title>
+    <title>Hala Neural Cuisine | عراف حلا الذكي</title>
     <meta name="description" content="مطعم المستقبل - اكتشف طبقك المثالي بناءً على مزاجك">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -22,10 +23,10 @@
                             700: '#1a1a3a',
                         },
                         'neon': {
-                            cyan: '#00f5ff',
-                            purple: '#bf00ff',
-                            pink: '#ff00aa',
-                            blue: '#0066ff',
+                            cyan: '#e040fb',
+                            purple: '#9c27b0',
+                            pink: '#f48fb1',
+                            blue: '#7c4dff',
                         }
                     }
                 }
@@ -33,7 +34,36 @@
         }
     </script>
 </head>
-<body class="font-cairo bg-space-900 min-h-screen overflow-x-hidden">
+
+<body class="font-cairo bg-space-900 min-h-screen overflow-x-hidden has-nav">
+    <!-- Navigation Bar -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <img src="assets/logo.png" alt="Hala Logo" class="nav-logo">
+                <span class="nav-title">Hala Neural Cuisine</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">
+                    <span class="nav-link-icon">🔮</span>
+                    <span>العميل</span>
+                </a>
+                <a href="cashier-dashboard.html" class="nav-link">
+                    <span class="nav-link-icon">💳</span>
+                    <span>الكاشير</span>
+                </a>
+                <a href="chef-dashboard.html" class="nav-link">
+                    <span class="nav-link-icon">👨‍🍳</span>
+                    <span>الشيف</span>
+                </a>
+                <a href="admin-dashboard.html" class="nav-link">
+                    <span class="nav-link-icon">📊</span>
+                    <span>المدير</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
     <!-- Animated Stars Background -->
     <div class="stars-container fixed inset-0 pointer-events-none">
         <div class="stars"></div>
@@ -48,22 +78,23 @@
 
     <!-- Main Container -->
     <main class="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-8">
-        
+
         <!-- Logo & Title Section -->
         <header class="text-center mb-12 floating-element">
             <div class="logo-container mb-6">
-                <div class="logo-ring"></div>
-                <div class="logo-core">
-                    <span class="text-4xl">🚀</span>
-                </div>
+                <img src="assets/logo.png" alt="Hala Neural Cuisine Logo" class="logo-image">
             </div>
-            <h1 class="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink mb-4 title-glow">
-                AI Antigravity
+            <h1
+                class="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink mb-4 title-glow">
+                Hala Neural Cuisine
             </h1>
             <p class="text-xl md:text-2xl text-gray-300 subtitle-fade">
-                ✨ عراف النكهات الذكي ✨
+                ✨ Hala's AI Oracle - عراف حلا الذكي ✨
             </p>
-            <p class="text-gray-500 mt-2 text-sm">
+            <p class="slogan-glow">
+                حيث تُلتقي العاطفة بالخوارزميات
+            </p>
+            <p class="text-gray-500 mt-3 text-sm">
                 دع الذكاء الاصطناعي يقرأ مزاجك ويختار لك الطبق المثالي
             </p>
         </header>
@@ -104,12 +135,9 @@
 
                 <!-- Text Input -->
                 <div class="relative mb-6">
-                    <textarea 
-                        id="moodInput" 
+                    <textarea id="moodInput"
                         class="w-full bg-space-800/50 border-2 border-neon-cyan/30 rounded-2xl p-4 text-white placeholder-gray-500 focus:border-neon-cyan focus:outline-none focus:ring-2 focus:ring-neon-cyan/20 transition-all duration-300 resize-none"
-                        rows="3"
-                        placeholder="مثال: أشعر بالسعادة والحماس، أريد شيئاً لذيذاً ومميزاً..."
-                    ></textarea>
+                        rows="3" placeholder="مثال: أشعر بالسعادة والحماس، أريد شيئاً لذيذاً ومميزاً..."></textarea>
                     <div class="absolute bottom-3 left-3 text-gray-500 text-xs" id="charCount">
                         0 / 200
                     </div>
@@ -119,7 +147,8 @@
                 <div class="grid grid-cols-2 gap-4 mb-6">
                     <div class="context-select">
                         <label class="text-gray-400 text-sm mb-2 block">🌤️ الطقس</label>
-                        <select id="weatherSelect" class="w-full bg-space-800 border border-neon-purple/30 rounded-xl p-3 text-white focus:border-neon-purple focus:outline-none">
+                        <select id="weatherSelect"
+                            class="w-full bg-space-800 border border-neon-purple/30 rounded-xl p-3 text-white focus:border-neon-purple focus:outline-none">
                             <option value="sunny">☀️ مشمس</option>
                             <option value="cloudy">🌤️ غائم</option>
                             <option value="rainy">🌧️ ماطر</option>
@@ -128,7 +157,8 @@
                     </div>
                     <div class="context-select">
                         <label class="text-gray-400 text-sm mb-2 block">⏰ الوقت</label>
-                        <select id="timeSelect" class="w-full bg-space-800 border border-neon-purple/30 rounded-xl p-3 text-white focus:border-neon-purple focus:outline-none">
+                        <select id="timeSelect"
+                            class="w-full bg-space-800 border border-neon-purple/30 rounded-xl p-3 text-white focus:border-neon-purple focus:outline-none">
                             <option value="breakfast">🌅 فطور</option>
                             <option value="lunch">☀️ غداء</option>
                             <option value="dinner" selected>🌙 عشاء</option>
@@ -138,7 +168,8 @@
                 </div>
 
                 <!-- Submit Button -->
-                <button id="analyzeBtn" class="w-full submit-btn py-4 rounded-2xl text-xl font-bold text-white relative overflow-hidden group">
+                <button id="analyzeBtn"
+                    class="w-full submit-btn py-4 rounded-2xl text-xl font-bold text-white relative overflow-hidden group">
                     <span class="relative z-10 flex items-center justify-center gap-2">
                         <span>🧠</span>
                         <span>اقرأ مزاجي واقترح لي</span>
@@ -183,7 +214,8 @@
 
                 <!-- Try Again Button -->
                 <div class="text-center mt-8">
-                    <button id="resetBtn" class="px-8 py-3 bg-space-700 hover:bg-space-800 border border-neon-cyan/30 rounded-xl text-white transition-all duration-300 hover:border-neon-cyan">
+                    <button id="resetBtn"
+                        class="px-8 py-3 bg-space-700 hover:bg-space-800 border border-neon-cyan/30 rounded-xl text-white transition-all duration-300 hover:border-neon-cyan">
                         🔄 جرب مزاج آخر
                     </button>
                 </div>
@@ -192,11 +224,12 @@
 
         <!-- Footer -->
         <footer class="mt-16 text-center text-gray-600 text-sm floating-element" style="animation-delay: 0.6s;">
-            <p>© 2024 AI Antigravity Restaurant | مطعم المستقبل</p>
-            <p class="mt-1">🌌 حيث الطعام يتحرر من الجاذبية</p>
+            <p>© 2024 Hala Neural Cuisine | مطبخ حلا العصبي</p>
+            <p class="mt-1">🧠 حيث تُلتقي العاطفة بالخوارزميات</p>
         </footer>
     </main>
 
     <script src="script.js"></script>
 </body>
+
 </html>

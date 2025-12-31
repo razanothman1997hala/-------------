@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hala Neural Cuisine | واجهة الشيف الذكية - Smart KDS</title>
+    <meta name="description" content="نظام عرض المطبخ الذكي - Smart Kitchen Display System">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="chef-styles.css">
+    <link rel="stylesheet" href="light-mode.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'cairo': ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        'space': {
+                            900: '#0a0a1a',
+                            800: '#12122a',
+                            700: '#1a1a3a',
+                        },
+                        'neon': {
+                            cyan: '#e040fb',
+                            purple: '#9c27b0',
+                            pink: '#f48fb1',
+                            blue: '#7c4dff',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-cairo bg-space-900 min-h-screen overflow-x-hidden has-nav">
+    <!-- Navigation Bar -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <img src="assets/logo.png" alt="Hala Logo" class="nav-logo">
+                <span class="nav-title">Hala Neural Cuisine</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <span class="nav-link-icon">🔮</span>
+                    <span>العميل</span>
+                </a>
+                <a href="cashier-dashboard.html" class="nav-link">
+                    <span class="nav-link-icon">💳</span>
+                    <span>الكاشير</span>
+                </a>
+                <a href="chef-dashboard.html" class="nav-link active">
+                    <span class="nav-link-icon">👨‍🍳</span>
+                    <span>الشيف</span>
+                </a>
+                <a href="admin-dashboard.html" class="nav-link">
+                    <span class="nav-link-icon">📊</span>
+                    <span>المدير</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Animated Stars Background -->
+    <div class="stars-container fixed inset-0 pointer-events-none">
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+    </div>
+
+    <!-- Floating Orbs -->
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
+
+    <!-- Main Container -->
+    <main class="relative z-10 min-h-screen p-4 md:p-8">
+
+        <!-- Header Section -->
+        <header class="mb-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <!-- Logo & Title -->
+                <div class="flex items-center gap-4">
+                    <div class="logo-container-sm">
+                        <img src="assets/logo.png" alt="Hala Logo" class="logo-image-sm">
+                    </div>
+                    <div>
+                        <h1
+                            class="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink title-glow">
+                            Smart KDS
+                        </h1>
+                        <p class="text-gray-400 text-sm">واجهة الشيف الذكية</p>
+                    </div>
+                </div>
+
+                <!-- Stats Dashboard -->
+                <div class="flex gap-4 flex-wrap justify-center">
+                    <div class="stat-card">
+                        <span class="stat-icon">📋</span>
+                        <div>
+                            <p class="stat-value" id="totalOrders">0</p>
+                            <p class="stat-label">طلبات نشطة</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">⚡</span>
+                        <div>
+                            <p class="stat-value text-red-400" id="urgentOrders">0</p>
+                            <p class="stat-label">مستعجل</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">✅</span>
+                        <div>
+                            <p class="stat-value text-green-400" id="completedOrders">0</p>
+                            <p class="stat-label">مكتمل</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">⏱️</span>
+                        <div>
+                            <p class="stat-value" id="avgTime">--</p>
+                            <p class="stat-label">متوسط التحضير</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Orders Grid -->
+        <section class="orders-section">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                    <span class="text-neon-cyan">📡</span>
+                    الطلبات الحية
+                    <span class="live-indicator"></span>
+                </h2>
+                <button id="addDemoOrder" class="demo-btn">
+                    ➕ إضافة طلب تجريبي
+                </button>
+            </div>
+
+            <!-- Orders Container -->
+            <div id="ordersGrid" class="orders-grid">
+                <!-- Order cards will be injected here -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state">
+                <div class="empty-icon">🍳</div>
+                <h3>لا توجد طلبات حالياً</h3>
+                <p>الطلبات الجديدة ستظهر هنا تلقائياً</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-12 text-center text-gray-600 text-sm">
+            <p>© 2024 Hala Neural Cuisine | نظام عرض المطبخ الذكي</p>
+            <p class="mt-1">🧠 حيث تُلتقي العاطفة بالخوارزميات</p>
+        </footer>
+    </main>
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" title="تبديل الوضع">
+        🌓
+    </button>
+
+    <script src="chef-dashboard.js"></script>
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Check saved preference
+        if (localStorage.getItem('kds-theme') === 'light') {
+            body.classList.add('light-mode');
+            themeToggle.textContent = '🌙';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('kds-theme', 'light');
+                themeToggle.textContent = '🌙';
+            } else {
+                localStorage.setItem('kds-theme', 'dark');
+                themeToggle.textContent = '☀️';
+            }
+        });
+    </script>
+</body>
+
+</html>

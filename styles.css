@@ -1,17 +1,18 @@
 /* ================================
-   AI Antigravity - Futuristic Styles
-   Zero-Gravity Restaurant Theme
+   Hala Neural Cuisine - Futuristic Styles
+   مطبخ حلا العصبي - ثيم فضائي
    ================================ */
 
 /* === Base Reset & Variables === */
 :root {
-    --neon-cyan: #00f5ff;
-    --neon-purple: #bf00ff;
-    --neon-pink: #ff00aa;
-    --neon-blue: #0066ff;
-    --space-900: #0a0a1a;
-    --space-800: #12122a;
-    --space-700: #1a1a3a;
+    --neon-cyan: #e040fb;
+    --neon-purple: #9c27b0;
+    --neon-pink: #f48fb1;
+    --neon-blue: #7c4dff;
+    --neon-magenta: #e040fb;
+    --space-900: #0d0518;
+    --space-800: #1a0a2e;
+    --space-700: #2d1b4e;
 }
 
 * {
@@ -21,8 +22,118 @@
 }
 
 body {
-    background: linear-gradient(135deg, var(--space-900) 0%, #0d0d2b 50%, #1a0a2e 100%);
+    background: linear-gradient(135deg, var(--space-900) 0%, #1a0525 50%, #2d1040 100%);
     min-height: 100vh;
+}
+
+/* === Navigation Bar === */
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(13, 5, 24, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(224, 64, 251, 0.2);
+    padding: 10px 20px;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.nav-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 15px rgba(224, 64, 251, 0.4);
+}
+
+.nav-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-links {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    background: rgba(45, 27, 78, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background: rgba(224, 64, 251, 0.15);
+    border-color: rgba(224, 64, 251, 0.4);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.nav-link.active {
+    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 5px 20px rgba(224, 64, 251, 0.3);
+}
+
+.nav-link-icon {
+    font-size: 1rem;
+}
+
+/* Body padding for fixed nav */
+body.has-nav {
+    padding-top: 70px;
+}
+
+/* Mobile Nav */
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 5px;
+    }
+    
+    .nav-link {
+        padding: 8px 10px;
+        font-size: 0.75rem;
+    }
+    
+    .nav-link span:not(.nav-link-icon) {
+        display: none;
+    }
+    
+    .nav-title {
+        font-size: 1rem;
+    }
 }
 
 /* === Animated Stars Background === */
@@ -200,6 +311,44 @@ body {
     100% { transform: rotate(360deg); }
 }
 
+/* === Custom Logo Image === */
+.logo-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 
+        0 0 20px rgba(224, 64, 251, 0.5),
+        0 0 40px rgba(156, 39, 176, 0.3);
+    animation: logoGlow 3s ease-in-out infinite;
+    border: 2px solid rgba(224, 64, 251, 0.5);
+}
+
+.logo-image-sm {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 
+        0 0 15px rgba(224, 64, 251, 0.4),
+        0 0 30px rgba(156, 39, 176, 0.2);
+    animation: logoGlow 3s ease-in-out infinite;
+    border: 2px solid rgba(224, 64, 251, 0.4);
+}
+
+@keyframes logoGlow {
+    0%, 100% { 
+        box-shadow: 
+            0 0 20px rgba(224, 64, 251, 0.5),
+            0 0 40px rgba(156, 39, 176, 0.3);
+    }
+    50% { 
+        box-shadow: 
+            0 0 30px rgba(224, 64, 251, 0.7),
+            0 0 60px rgba(156, 39, 176, 0.5);
+    }
+}
+
 /* === Title Glow Effect === */
 .title-glow {
     text-shadow: 
@@ -233,6 +382,42 @@ body {
 @keyframes subtitleFade {
     0%, 100% { opacity: 0.8; }
     50% { opacity: 1; }
+}
+
+/* === Slogan Neon Glow Effect === */
+.slogan-glow {
+    font-size: 1.1rem;
+    color: var(--neon-magenta);
+    text-shadow: 
+        0 0 5px var(--neon-magenta),
+        0 0 10px var(--neon-magenta),
+        0 0 20px var(--neon-purple),
+        0 0 40px var(--neon-purple),
+        0 0 60px var(--neon-pink);
+    animation: sloganPulse 3s ease-in-out infinite;
+    margin-top: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+@keyframes sloganPulse {
+    0%, 100% { 
+        opacity: 0.9;
+        text-shadow: 
+            0 0 5px var(--neon-magenta),
+            0 0 10px var(--neon-magenta),
+            0 0 20px var(--neon-purple),
+            0 0 40px var(--neon-purple);
+    }
+    50% { 
+        opacity: 1;
+        text-shadow: 
+            0 0 10px var(--neon-magenta),
+            0 0 20px var(--neon-magenta),
+            0 0 40px var(--neon-purple),
+            0 0 80px var(--neon-purple),
+            0 0 100px var(--neon-pink);
+    }
 }
 
 /* === Glass Card === */

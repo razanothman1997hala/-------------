@@ -1,0 +1,555 @@
+/* ================================
+   Smart KDS - Light Mode Theme
+   Kitchen Display System - وضع الإضاءة الفاتحة
+   ================================ */
+
+/* === Light Mode Variables === */
+:root {
+    --light-bg: #f8f9fa;
+    --light-card: #ffffff;
+    --light-border: #e9ecef;
+    --light-text: #1a1a2e;
+    --light-text-secondary: #6c757d;
+    --accent-purple: #9c27b0;
+    --accent-violet: #e040fb;
+    --accent-pink: #f48fb1;
+    --success-green: #28a745;
+    --warning-orange: #fd7e14;
+    --danger-red: #dc3545;
+}
+
+/* === Light Mode Body === */
+body.light-mode {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+}
+
+body.light-mode .stars-container,
+body.light-mode .floating-orb {
+    display: none !important;
+}
+
+/* === Light Mode Navigation === */
+body.light-mode .main-nav {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid var(--light-border);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .nav-title {
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-violet));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body.light-mode .nav-link {
+    background: #f8f9fa;
+    border-color: var(--light-border);
+    color: var(--light-text-secondary);
+}
+
+body.light-mode .nav-link:hover {
+    background: rgba(156, 39, 176, 0.1);
+    border-color: var(--accent-purple);
+    color: var(--accent-purple);
+}
+
+body.light-mode .nav-link.active {
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-violet));
+    color: white;
+}
+
+/* === Light Mode Main Container === */
+body.light-mode main {
+    background: transparent;
+}
+
+/* === Light Mode Stats Cards === */
+body.light-mode .stat-card {
+    background: var(--light-card);
+    border: 1px solid var(--light-border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .stat-card:hover {
+    border-color: var(--accent-purple);
+    box-shadow: 0 4px 15px rgba(156, 39, 176, 0.1);
+}
+
+body.light-mode .stat-value {
+    color: var(--accent-purple);
+}
+
+body.light-mode .stat-label {
+    color: var(--light-text-secondary);
+}
+
+/* === Light Mode Order Cards === */
+body.light-mode .order-card {
+    background: var(--light-card);
+    border: 1px solid var(--light-border);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .order-card::before {
+    background: linear-gradient(90deg, var(--accent-purple), var(--accent-violet));
+}
+
+body.light-mode .order-card:hover {
+    border-color: var(--accent-purple);
+    box-shadow: 0 8px 25px rgba(156, 39, 176, 0.15);
+}
+
+body.light-mode .order-card.urgent {
+    border-color: var(--danger-red);
+    box-shadow: 0 4px 20px rgba(220, 53, 69, 0.15);
+}
+
+body.light-mode .order-card.urgent::before {
+    background: linear-gradient(90deg, var(--danger-red), #ff6b6b);
+}
+
+body.light-mode .order-number {
+    color: var(--light-text);
+}
+
+body.light-mode .order-time {
+    color: var(--light-text-secondary);
+}
+
+/* === Light Mode Mood Badge === */
+body.light-mode .mood-badge {
+    background: rgba(156, 39, 176, 0.1);
+    border-color: rgba(156, 39, 176, 0.3);
+    color: var(--accent-purple);
+}
+
+/* === Light Mode Dish Info === */
+body.light-mode .dish-name {
+    color: var(--light-text);
+}
+
+body.light-mode .dish-details {
+    color: var(--light-text-secondary);
+}
+
+/* === Light Mode Timer === */
+body.light-mode .timer-label {
+    color: var(--light-text-secondary);
+}
+
+body.light-mode .timer-value {
+    color: var(--light-text);
+}
+
+body.light-mode .timer-bar {
+    background: var(--light-border);
+}
+
+body.light-mode .timer-progress.green {
+    background: linear-gradient(90deg, var(--success-green), #34ce57);
+}
+
+body.light-mode .timer-progress.yellow {
+    background: linear-gradient(90deg, var(--warning-orange), #ffb347);
+}
+
+body.light-mode .timer-progress.red {
+    background: linear-gradient(90deg, var(--danger-red), #ff6b6b);
+}
+
+/* === Light Mode Complete Button === */
+body.light-mode .complete-btn {
+    background: linear-gradient(135deg, var(--success-green), #34ce57);
+    color: white;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+body.light-mode .complete-btn:hover {
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+
+/* === Light Mode Priority Tags === */
+body.light-mode .priority-tag.urgent {
+    background: rgba(220, 53, 69, 0.1);
+    border-color: var(--danger-red);
+    color: var(--danger-red);
+}
+
+body.light-mode .priority-tag.vip {
+    background: rgba(255, 193, 7, 0.15);
+    border-color: #ffc107;
+    color: #856404;
+}
+
+/* === Light Mode Demo Button === */
+body.light-mode .demo-btn {
+    background: rgba(156, 39, 176, 0.1);
+    border-color: var(--accent-purple);
+    color: var(--accent-purple);
+}
+
+body.light-mode .demo-btn:hover {
+    background: var(--accent-purple);
+    color: white;
+}
+
+/* === Light Mode Empty State === */
+body.light-mode .empty-state h3 {
+    color: var(--light-text);
+}
+
+body.light-mode .empty-state p {
+    color: var(--light-text-secondary);
+}
+
+/* === Light Mode Headers === */
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3 {
+    color: var(--light-text);
+}
+
+body.light-mode .title-glow {
+    text-shadow: none;
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-violet));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* === Light Mode Footer === */
+body.light-mode footer p {
+    color: var(--light-text-secondary);
+}
+
+/* === Light Mode Toggle Button === */
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-violet));
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(156, 39, 176, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(156, 39, 176, 0.5);
+}
+
+/* === Light Mode Scrollbar === */
+body.light-mode ::-webkit-scrollbar-track {
+    background: var(--light-bg);
+}
+
+body.light-mode ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-violet));
+}
+
+/* === Light Mode Complexity === */
+body.light-mode .complexity {
+    color: var(--light-text-secondary);
+}
+
+body.light-mode .complexity-dot {
+    background: var(--light-border);
+}
+
+body.light-mode .complexity-dot.active {
+    background: var(--accent-purple);
+    box-shadow: 0 0 5px var(--accent-purple);
+}
+
+/* === Light Mode Section Title === */
+body.light-mode .text-white {
+    color: var(--light-text) !important;
+}
+
+body.light-mode .text-gray-400 {
+    color: var(--light-text-secondary) !important;
+}
+
+body.light-mode .text-neon-cyan {
+    color: var(--accent-purple) !important;
+}
+
+/* ================================
+   POS Light Mode Styles
+   واجهة الكاشير - الوضع الفاتح
+   ================================ */
+
+/* === POS Sections === */
+body.light-mode .menu-section {
+    background: var(--light-card);
+    border: 1px solid var(--light-border);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .cart-section {
+    background: var(--light-card);
+    border: 1px solid var(--light-border);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* === POS Stats === */
+body.light-mode .pos-stat {
+    background: var(--light-card);
+    border: 1px solid var(--light-border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+body.light-mode .pos-stat:hover {
+    border-color: var(--accent-purple);
+}
+
+body.light-mode .pos-stat-value {
+    color: var(--accent-purple);
+}
+
+body.light-mode .pos-stat-label {
+    color: var(--light-text-secondary);
+}
+
+/* === Category Buttons === */
+body.light-mode .category-btn {
+    background: #f8f9fa;
+    border: 1px solid var(--light-border);
+    color: var(--light-text-secondary);
+}
+
+body.light-mode .category-btn:hover {
+    background: rgba(156, 39, 176, 0.1);
+    border-color: var(--accent-purple);
+    color: var(--accent-purple);
+}
+
+body.light-mode .category-btn.active {
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-violet));
+    color: white;
+    border-color: transparent;
+}
+
+/* === Menu Item Cards === */
+body.light-mode .menu-item {
+    background: #f8f9fa;
+    border: 1px solid var(--light-border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+body.light-mode .menu-item::before {
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-violet));
+}
+
+body.light-mode .menu-item:hover {
+    border-color: var(--accent-purple);
+    box-shadow: 0 6px 20px rgba(156, 39, 176, 0.15);
+}
+
+body.light-mode .menu-item-name {
+    color: var(--light-text);
+}
+
+body.light-mode .menu-item-price {
+    color: var(--accent-purple);
+}
+
+/* === Cart Header === */
+body.light-mode .cart-header {
+    border-bottom: 1px solid var(--light-border);
+}
+
+body.light-mode .cart-title {
+    color: var(--light-text);
+}
+
+body.light-mode .clear-cart-btn {
+    background: rgba(220, 53, 69, 0.1);
+    border-color: var(--danger-red);
+    color: var(--danger-red);
+}
+
+/* === Order Type Toggle === */
+body.light-mode .order-type-btn {
+    background: #f8f9fa;
+    border: 1px solid var(--light-border);
+    color: var(--light-text-secondary);
+}
+
+body.light-mode .order-type-btn:hover {
+    border-color: var(--accent-purple);
+    color: var(--accent-purple);
+}
+
+body.light-mode .order-type-btn.active {
+    background: rgba(156, 39, 176, 0.1);
+    border-color: var(--accent-purple);
+    color: var(--accent-purple);
+}
+
+/* === Cart Items === */
+body.light-mode .cart-item {
+    background: #f8f9fa;
+    border: 1px solid var(--light-border);
+}
+
+body.light-mode .cart-item-name {
+    color: var(--light-text);
+}
+
+body.light-mode .cart-item-price {
+    color: var(--accent-purple);
+}
+
+body.light-mode .qty-btn {
+    background: rgba(156, 39, 176, 0.1);
+    border-color: var(--accent-purple);
+    color: var(--accent-purple);
+}
+
+body.light-mode .qty-value {
+    color: var(--light-text);
+}
+
+body.light-mode .remove-item {
+    background: rgba(220, 53, 69, 0.1);
+    border-color: var(--danger-red);
+    color: var(--danger-red);
+}
+
+/* === Empty Cart === */
+body.light-mode .empty-cart {
+    color: var(--light-text-secondary);
+}
+
+/* === Cart Summary === */
+body.light-mode .cart-summary {
+    background: #f8f9fa;
+    border: 1px solid var(--light-border);
+}
+
+body.light-mode .summary-row {
+    color: var(--light-text-secondary);
+}
+
+body.light-mode .summary-row.total {
+    color: var(--light-text);
+    border-top-color: var(--light-border);
+}
+
+body.light-mode .summary-row.total span:last-child {
+    color: var(--accent-purple);
+}
+
+/* === Payment Buttons === */
+body.light-mode .payment-btn.cash {
+    background: linear-gradient(135deg, rgba(40, 167, 69, 0.15), rgba(40, 167, 69, 0.1));
+    border-color: var(--success-green);
+    color: var(--success-green);
+}
+
+body.light-mode .payment-btn.cash:hover {
+    background: var(--success-green);
+    color: white;
+}
+
+body.light-mode .payment-btn.card {
+    background: linear-gradient(135deg, rgba(156, 39, 176, 0.15), rgba(156, 39, 176, 0.1));
+    border-color: var(--accent-purple);
+    color: var(--accent-purple);
+}
+
+body.light-mode .payment-btn.card:hover {
+    background: var(--accent-purple);
+    color: white;
+}
+
+/* === Action Buttons === */
+body.light-mode .action-btn.kitchen {
+    background: rgba(253, 126, 20, 0.1);
+    border-color: var(--warning-orange);
+    color: var(--warning-orange);
+}
+
+body.light-mode .action-btn.kitchen:hover {
+    background: var(--warning-orange);
+    color: white;
+}
+
+body.light-mode .action-btn.print {
+    background: #f8f9fa;
+    border: 1px solid var(--light-border);
+    color: var(--light-text);
+}
+
+body.light-mode .action-btn.print:hover {
+    border-color: var(--accent-purple);
+    color: var(--accent-purple);
+}
+
+/* === Payment Modal === */
+body.light-mode .modal-overlay {
+    background: rgba(248, 249, 250, 0.95);
+}
+
+body.light-mode .payment-modal {
+    background: var(--light-card);
+    border: 1px solid var(--light-border);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .modal-header h3 {
+    color: var(--light-text);
+}
+
+body.light-mode .payment-total {
+    background: #f8f9fa;
+    border: 1px solid var(--light-border);
+}
+
+body.light-mode .payment-total span:first-child {
+    color: var(--light-text-secondary);
+}
+
+body.light-mode .total-amount {
+    color: var(--accent-purple);
+}
+
+body.light-mode .payment-input-group label {
+    color: var(--light-text-secondary);
+}
+
+body.light-mode .payment-input {
+    background: #f8f9fa;
+    border: 2px solid var(--light-border);
+    color: var(--light-text);
+}
+
+body.light-mode .payment-input:focus {
+    border-color: var(--accent-purple);
+}
+
+body.light-mode .change-display {
+    background: rgba(40, 167, 69, 0.1);
+    border-color: var(--success-green);
+}
+
+body.light-mode .change-amount {
+    color: var(--success-green);
+}
+
+/* === Success Toast === */
+body.light-mode .success-toast {
+    background: rgba(40, 167, 69, 0.15);
+    border-color: var(--success-green);
+    color: var(--success-green);
+}

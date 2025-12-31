@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hala Neural Cuisine | مركز قيادة المدير</title>
+    <meta name="description" content="مركز القيادة الذكي - Management Command Center">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin-styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'cairo': ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        'space': {
+                            900: '#0a0a1a',
+                            800: '#12122a',
+                            700: '#1a1a3a',
+                        },
+                        'neon': {
+                            cyan: '#e040fb',
+                            purple: '#9c27b0',
+                            pink: '#f48fb1',
+                            blue: '#7c4dff',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-cairo bg-space-900 min-h-screen overflow-x-hidden has-nav">
+    <!-- Navigation Bar -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <img src="assets/logo.png" alt="Hala Logo" class="nav-logo">
+                <span class="nav-title">Hala Neural Cuisine</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">
+                    <span class="nav-link-icon">🔮</span>
+                    <span>العميل</span>
+                </a>
+                <a href="cashier-dashboard.html" class="nav-link">
+                    <span class="nav-link-icon">💳</span>
+                    <span>الكاشير</span>
+                </a>
+                <a href="chef-dashboard.html" class="nav-link">
+                    <span class="nav-link-icon">👨‍🍳</span>
+                    <span>الشيف</span>
+                </a>
+                <a href="admin-dashboard.html" class="nav-link active">
+                    <span class="nav-link-icon">📊</span>
+                    <span>المدير</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Animated Stars Background -->
+    <div class="stars-container fixed inset-0 pointer-events-none">
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+    </div>
+
+    <!-- Floating Orbs -->
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
+
+    <!-- Main Container -->
+    <main class="relative z-10 min-h-screen p-4 md:p-6">
+
+        <!-- Header Section -->
+        <header class="mb-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <!-- Logo & Title -->
+                <div class="flex items-center gap-4">
+                    <div class="logo-container-sm">
+                        <img src="assets/logo.png" alt="Hala Logo" class="logo-image-sm">
+                    </div>
+                    <div>
+                        <h1
+                            class="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink title-glow">
+                            Command Center
+                        </h1>
+                        <p class="text-gray-400 text-sm">مركز قيادة المدير الذكي</p>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="flex gap-3 flex-wrap justify-center">
+                    <div class="quick-stat">
+                        <span class="quick-stat-value text-green-400" id="todayRevenue">0</span>
+                        <span class="quick-stat-label">ر.س إيرادات اليوم</span>
+                    </div>
+                    <div class="quick-stat">
+                        <span class="quick-stat-value text-neon-cyan" id="todayOrders">0</span>
+                        <span class="quick-stat-label">طلب اليوم</span>
+                    </div>
+                    <div class="quick-stat">
+                        <span class="quick-stat-value text-yellow-400" id="activeChefs">0</span>
+                        <span class="quick-stat-label">شيف نشط</span>
+                    </div>
+                    <div class="quick-stat live">
+                        <span class="live-dot"></span>
+                        <span class="quick-stat-label">مباشر</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard Grid -->
+        <div class="dashboard-grid">
+
+            <!-- AI Analytics Section -->
+            <section class="dashboard-card span-2 floating-element">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <span class="card-icon">📊</span>
+                        الإحصائيات التنبؤية
+                    </h2>
+                    <div class="card-badge ai-badge">
+                        <span>🧠</span> AI Analytics
+                    </div>
+                </div>
+
+                <div class="charts-container">
+                    <!-- Traffic Prediction Chart -->
+                    <div class="chart-wrapper">
+                        <h3 class="chart-title">توقعات الزحام للساعات القادمة</h3>
+                        <canvas id="trafficChart"></canvas>
+                    </div>
+
+                    <!-- Revenue Chart -->
+                    <div class="chart-wrapper">
+                        <h3 class="chart-title">الأرباح اللحظية (آخر 12 ساعة)</h3>
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- AI Insights -->
+                <div class="ai-insights">
+                    <div class="insight-item positive">
+                        <span class="insight-icon">📈</span>
+                        <span>توقع زيادة 25% في الطلبات خلال الساعتين القادمتين</span>
+                    </div>
+                    <div class="insight-item warning">
+                        <span class="insight-icon">⚠️</span>
+                        <span>يُنصح بتجهيز مكونات إضافية للبرغر والستيك</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Smart Inventory Section -->
+            <section class="dashboard-card floating-element" style="animation-delay: 0.1s;">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <span class="card-icon">📦</span>
+                        مراقبة المخزون الذكي
+                    </h2>
+                </div>
+
+                <div class="inventory-list" id="inventoryList">
+                    <!-- Items will be injected here -->
+                </div>
+
+                <div class="inventory-summary">
+                    <div class="summary-stat critical">
+                        <span id="criticalItems">0</span>
+                        <span>حرج</span>
+                    </div>
+                    <div class="summary-stat warning">
+                        <span id="warningItems">0</span>
+                        <span>تحذير</span>
+                    </div>
+                    <div class="summary-stat good">
+                        <span id="goodItems">0</span>
+                        <span>جيد</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Customer Sentiment Section -->
+            <section class="dashboard-card floating-element" style="animation-delay: 0.2s;">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <span class="card-icon">💬</span>
+                        تحليل رضا العملاء
+                    </h2>
+                    <div class="card-badge">
+                        Sentiment Analysis
+                    </div>
+                </div>
+
+                <!-- Sentiment Overview -->
+                <div class="sentiment-overview">
+                    <div class="sentiment-ring">
+                        <canvas id="sentimentChart"></canvas>
+                        <div class="sentiment-center">
+                            <span class="sentiment-score" id="overallScore">87%</span>
+                            <span class="sentiment-label">رضا عام</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sentiment Breakdown -->
+                <div class="sentiment-breakdown">
+                    <div class="sentiment-item happy">
+                        <span class="sentiment-emoji">😊</span>
+                        <div class="sentiment-info">
+                            <span class="sentiment-count" id="happyCount">0</span>
+                            <span class="sentiment-name">سعيد</span>
+                        </div>
+                        <div class="sentiment-bar">
+                            <div class="sentiment-fill happy" id="happyBar"></div>
+                        </div>
+                    </div>
+                    <div class="sentiment-item neutral">
+                        <span class="sentiment-emoji">😐</span>
+                        <div class="sentiment-info">
+                            <span class="sentiment-count" id="neutralCount">0</span>
+                            <span class="sentiment-name">محايد</span>
+                        </div>
+                        <div class="sentiment-bar">
+                            <div class="sentiment-fill neutral" id="neutralBar"></div>
+                        </div>
+                    </div>
+                    <div class="sentiment-item unhappy">
+                        <span class="sentiment-emoji">😞</span>
+                        <div class="sentiment-info">
+                            <span class="sentiment-count" id="unhappyCount">0</span>
+                            <span class="sentiment-name">غير راضٍ</span>
+                        </div>
+                        <div class="sentiment-bar">
+                            <div class="sentiment-fill unhappy" id="unhappyBar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Reviews -->
+                <div class="recent-reviews" id="recentReviews">
+                    <!-- Reviews will be injected here -->
+                </div>
+            </section>
+
+            <!-- Team Performance Section -->
+            <section class="dashboard-card span-2 floating-element" style="animation-delay: 0.3s;">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <span class="card-icon">👨‍🍳</span>
+                        أداء فريق الطهاة
+                    </h2>
+                    <div class="card-badge performance-badge">
+                        <span>⚡</span> Live Performance
+                    </div>
+                </div>
+
+                <div class="performance-table-wrapper">
+                    <table class="performance-table">
+                        <thead>
+                            <tr>
+                                <th>الشيف</th>
+                                <th>الطلبات المكتملة</th>
+                                <th>متوسط الوقت</th>
+                                <th>الوقت التنبئي AI</th>
+                                <th>الفارق</th>
+                                <th>التقييم</th>
+                            </tr>
+                        </thead>
+                        <tbody id="performanceTable">
+                            <!-- Rows will be injected here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Team Summary -->
+                <div class="team-summary">
+                    <div class="team-stat">
+                        <span class="team-stat-icon">🏆</span>
+                        <div>
+                            <span class="team-stat-value" id="bestChef">--</span>
+                            <span class="team-stat-label">أفضل أداء اليوم</span>
+                        </div>
+                    </div>
+                    <div class="team-stat">
+                        <span class="team-stat-icon">⏱️</span>
+                        <div>
+                            <span class="team-stat-value" id="avgTeamTime">--</span>
+                            <span class="team-stat-label">متوسط وقت الفريق</span>
+                        </div>
+                    </div>
+                    <div class="team-stat">
+                        <span class="team-stat-icon">📈</span>
+                        <div>
+                            <span class="team-stat-value text-green-400" id="efficiencyRate">--</span>
+                            <span class="team-stat-label">معدل الكفاءة</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-8 text-center text-gray-600 text-sm">
+            <p>© 2024 Hala Neural Cuisine | مركز القيادة الذكي</p>
+            <p class="mt-1">🧠 حيث تُلتقي العاطفة بالخوارزميات</p>
+        </footer>
+    </main>
+
+    <script src="admin-dashboard.js"></script>
+</body>
+
+</html>
